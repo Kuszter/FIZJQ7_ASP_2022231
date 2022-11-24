@@ -7,12 +7,14 @@ namespace FIZJQ7_ASP_2022231.Infrastructure
     {
         public ShopContext(DbContextOptions<ShopContext> options) : base(options)
         { }
-            public DbSet<Product> Products { get; set; }
+        public DbSet<Product> Products { get; set; }
             public DbSet<Category> Categories { get; set; }
     
 
         }   
-    }
+ }
+
+
 
 
 
