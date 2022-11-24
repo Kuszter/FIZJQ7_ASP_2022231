@@ -1,4 +1,13 @@
+using FIZJQ7_ASP_2022231.Infrastructure;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<ShopContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration["ConnectionString:DbConnection"]);
+}
+);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
