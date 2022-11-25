@@ -1,8 +1,8 @@
 ﻿using FIZJQ7_ASP_2022231.Infrastructure;
+using FIZJQ7_ASP_2022231.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ShoppingCart.Infrastructure;
-using ShoppingCart.Models;
+
 
 namespace FIZJQ7_ASP_2022231.Controllers
 {
@@ -10,7 +10,7 @@ namespace FIZJQ7_ASP_2022231.Controllers
     {
         private readonly ShopContext _context;
 
-        public ProductsController(DataContext context)
+        public ProductsController(ShopContext context)
         {
             _context = context;
         }
