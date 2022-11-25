@@ -3,7 +3,7 @@ using FIZJQ7_ASP_2022231.Models;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace ShoppingCart.Infrastructure
+namespace FIZJQ7_ASP_2022231.Infrastructure
 {
     public class SeedData
     {

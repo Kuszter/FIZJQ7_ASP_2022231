@@ -1,9 +1,7 @@
-﻿
-
-using Microsoft.AspNetCore.Razor.TagHelpers;
+﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.Text;
 
-namespace FIZJQ7ASP2022231.Infrastructure.TagHelpers
+namespace FIZJQ7_ASP_2022231.Infrastructure.TagHelpers
 {
     public class PaginationTagHelper : TagHelper
     {
@@ -102,18 +100,3 @@ namespace FIZJQ7ASP2022231.Infrastructure.TagHelpers
         }
     }
 }
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-asp.net-core-6-.net-6-project-shopping-cart/PaginationTagHelper.cs at main · fep-coder/asp.net-core-6-.net-6-project-shopping-cart
