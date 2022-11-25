@@ -1,6 +1,6 @@
 using FIZJQ7_ASP_2022231.Infrastructure;
 using Microsoft.EntityFrameworkCore;
-using ShoppingCart.Infrastructure;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +25,15 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+
+    app.MapControllerRoute(
+
+        name: "products",
+        pattern: "/products/{categorySlug?}",
+defaults: new { controller = "Products", action = "Index" });
+
+
 
 app.MapControllerRoute(
     name: "default",
