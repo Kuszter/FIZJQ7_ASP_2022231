@@ -3,7 +3,7 @@
 {
     <p>Kosár tartalma:<span class="badge badge-primary">@Model.NumberOfItems</span></p>
 <p>Összeg:<b>@Model.TotalAmount.ToString("C2")</b></p>
-<a href="#" class="btn btn-primary mb-2">Kosár tartalma</a>
+<a href="#" class="btn btn-primary mb-2" asp-controller="Cart" asp-action="Index">Kosár tartalma</a>
 <a href="#" class="btn btn-danger">Kosár törlése</a>
 }
 else
