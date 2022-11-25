@@ -7,7 +7,7 @@
 <h1>Products</h1>
 
 <p>
-        <a asp-action="Create">Create New</a>
+        <a asp-action="Create">Új hozzáadása</a>
 </p>
 
 <table class="table">
@@ -37,8 +37,8 @@
                                         <img src="/media/products/@item.Image" width="100" alt="" />
                                 </td>
                                 <td>
-                                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                                        <a asp-action="Delete" asp-route-id="@item.Id" class="confirmDeletion">Delete</a>
+                                        <a asp-action="Edit" asp-route-id="@item.Id">Szerkesztés</a> |
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="confirmDeletion">Törlés</a>
                                 </td>
                         </tr>
                 }
