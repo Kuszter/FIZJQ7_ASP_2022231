@@ -1,0 +1,14 @@
+﻿@model SmallCartViewModel
+
+    <ul class="list-group-item">
+        <li class="list-group-item">
+            <a class="nav-link text-dark" asp-controller="Products" asp-action="Index" asp-route-categorySlug="">Összes Termék</a>
+
+        </li>
+        @foreach(var item in Model)
+    {
+        <li class="lsit-group-item">
+            <a class="nav-link text-dark" asp-controller="Products" asp-action="Index" asp-route-categorySlug="@item.Slug">@item.Name</a>
+        </li>
+    }
+</ul>
