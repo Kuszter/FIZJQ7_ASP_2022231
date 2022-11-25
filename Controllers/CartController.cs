@@ -13,7 +13,13 @@ namespace FIZJQ7_ASP_2022231.Controllers
         {
             _context = context;
         }
-
+        public async Task <IActionResult> Add(long id)
+        {
+            Product product = await _context.Products.FindAsync(id);
+            List<CartItem> cartItems = HttpContext.Session.GetJson<List<CartItem>>("Car") ?? new List<CartItem>();
+            CartItem cartItem = cartItems.Where(x => x.ProductId == id).FirstOrDefault();
+        
+        }
 
         public IActionResult Index()
         {
