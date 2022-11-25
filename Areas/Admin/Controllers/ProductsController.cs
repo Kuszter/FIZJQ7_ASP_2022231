@@ -1,5 +1,6 @@
 ﻿using FIZJQ7_ASP_2022231.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace FIZJQ7_ASP_2022231.Areas.Admin.Controllers
@@ -8,10 +9,12 @@ namespace FIZJQ7_ASP_2022231.Areas.Admin.Controllers
     public class ProductsController : Controller
     {
         private readonly ShopContext _context;
+        private readonly IWebHostEnvironment webHost;
 
-        public ProductsController(ShopContext context)
+        public ProductsController(ShopContext context, IWebHostEnvironment webHost)
         {
             _context = context;
+            this.webHost = webHost;
         }
 
 
@@ -25,6 +28,17 @@ namespace FIZJQ7_ASP_2022231.Areas.Admin.Controllers
                 .Include(p=>p.Category)
                 .Skip((p - 1) * pageSize)
                 .Take(pageSize).ToListAsync());
+
+
+        }
+
+
+        public  IActionResult Create(int p = 1)
+        {
+            ViewBag.Categories = new SelectList(_context.Categories, "Id", "Name");
+            ViewBag.TotalPages = (int)Math.Ceiling((decimal)_context.Products.Count() / pageSize);
+            return View();
+           
 
 
         }

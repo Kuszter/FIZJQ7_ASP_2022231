@@ -15,7 +15,7 @@ namespace FIZJQ7_ASP_2022231.Infrastructure.Validation
 
                 if (!result)
                 {
-                    return new ValidationResult("Allowed extensions are jpg and png");
+                    return new ValidationResult("Megengedett kiterjesztések: .jpg .png");
                 }
             }
 

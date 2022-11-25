@@ -19,6 +19,10 @@ namespace FIZJQ7_ASP_2022231.Models
         public Category Category { get; set; }
         public string Image { get; set; }
 
+        [NotMapped]
+        [FileExtensions]
+        public IFormFile ImageUpload { get; set; }
+
 
     }
 }
