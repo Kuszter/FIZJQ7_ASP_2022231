@@ -1,14 +1,13 @@
 ﻿@model SmallCartViewModel
+@if(Model!=null)
+{
+    <p>Kosár tartalma:<span class="badge badge-primary">@Model.NumberOfItems</span></p>
+<p>Összeg:<b>@Model.TotalAmount.ToString("C2")</b></p>
+<a href="#" class="btn btn-primary mb-2">Kosár tartalma</a>
+<a href="#" class="btn btn-danger">Kosár törlése</a>
+}
+else
+{
+    <p class="lead m-0">Kosarad üres</p>
+}
 
-    <ul class="list-group-item">
-        <li class="list-group-item">
-            <a class="nav-link text-dark" asp-controller="Products" asp-action="Index" asp-route-categorySlug="">Összes Termék</a>
-
-        </li>
-        @foreach(var item in Model)
-    {
-        <li class="lsit-group-item">
-            <a class="nav-link text-dark" asp-controller="Products" asp-action="Index" asp-route-categorySlug="@item.Slug">@item.Name</a>
-        </li>
-    }
-</ul>
