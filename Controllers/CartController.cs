@@ -44,5 +44,61 @@ namespace FIZJQ7_ASP_2022231.Controllers
 
             return View(cartvm);
         }
+
+        public async Task<IActionResult> Decrease(long id)
+        {
+
+            List<CartItem> cartItems = HttpContext.Session.GetJson<List<CartItem>>("Car");
+            CartItem cartItem = cartItems.Where(x => x.ProductId == id).FirstOrDefault();
+            if (cartItem.Quantity>1)
+            {
+                cartItem.Quantity--;
+            }
+            else
+            {
+                cartItems.RemoveAll(x => x.ProductId == id);
+            }
+            if (cartItems.Count==0)
+            {
+                HttpContext.Session.Remove("Cart");
+            }
+            else
+            {
+                HttpContext.Session.SetJson("Cart", cartItems);
+                
+            }
+           
+            TempData["Succes"] = "A termék sikeresen eltávolítva!";
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> Remove(long id)
+        {
+
+            List<CartItem> cartItems = HttpContext.Session.GetJson<List<CartItem>>("Car");
+           cartItems.RemoveAll(x => x.ProductId == id);
+            
+          
+            if (cartItems.Count == 0)
+            {
+                HttpContext.Session.Remove("Cart");
+            }
+            else
+            {
+                HttpContext.Session.SetJson("Cart", cartItems);
+
+            }
+
+            TempData["Succes"] = "A termék sikeresen eltávolítva!";
+            return RedirectToAction("Index");
+        }
+
+        public  IActionResult Clear()
+        {
+
+            HttpContext.Session.Remove("Cart");
+            return RedirectToAction("Index");
+        }
+
     }
 }
