@@ -45,21 +45,21 @@
                         </div>
 
                         <div class="form-group">
-                                <button class="btn btn-primary">Create</button>
+                                <button class="btn btn-primary">Létrehoz</button>
                         </div>
                 </form>
         </div>
 </div>
 
 <div>
-        <a asp-action="Index">Vissza a listához</a>
+        <a asp-action="Index">Vissza</a>
 </div>
 
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
 }
-//CKEditor cdn oldaláról másolva -> Azerkesztő tool a termék leírásának formázásához 
+//editor a leíráshoz
 <script src="https://cdn.ckeditor.com/4.19.0/standard/ckeditor.js"></script>
 <script>
         $("#ImageUpload").change(function() {

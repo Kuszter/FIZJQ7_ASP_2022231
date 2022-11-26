@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
-namespace FIZJQ7_ASP_2022231.Areas.Admin.Controllers
+namespace ShoppingCart.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Authorize]
@@ -55,7 +55,7 @@ namespace FIZJQ7_ASP_2022231.Areas.Admin.Controllers
                 var slug = await _context.Products.FirstOrDefaultAsync(p => p.Slug == product.Slug);
                 if (slug != null)
                 {
-                    ModelState.AddModelError("", "A termék már létezik.");
+                    ModelState.AddModelError("", "A termék már létezik");
                     return View(product);
                 }
 
@@ -76,7 +76,7 @@ namespace FIZJQ7_ASP_2022231.Areas.Admin.Controllers
                 _context.Add(product);
                 await _context.SaveChangesAsync();
 
-                TempData["Success"] = "Termék sikeresen létrehozva!";
+                TempData["Success"] = "Termék létrehozva";
 
                 return RedirectToAction("Index");
             }
@@ -106,7 +106,7 @@ namespace FIZJQ7_ASP_2022231.Areas.Admin.Controllers
                 var slug = await _context.Products.FirstOrDefaultAsync(p => p.Slug == product.Slug);
                 if (slug != null)
                 {
-                    ModelState.AddModelError("", "A termék már létezik");
+                    ModelState.AddModelError("", "Termék már létezik");
                     return View(product);
                 }
 
@@ -127,7 +127,7 @@ namespace FIZJQ7_ASP_2022231.Areas.Admin.Controllers
                 _context.Update(product);
                 await _context.SaveChangesAsync();
 
-                TempData["Success"] = "A termék szerkesztve!";
+                TempData["Success"] = "Termék szerkesztve!";
             }
 
             return View(product);
@@ -139,7 +139,6 @@ namespace FIZJQ7_ASP_2022231.Areas.Admin.Controllers
 
             if (!string.Equals(product.Image, "noimage.png"))
             {
-                //kép trölése
                 string uploadsDir = Path.Combine(_webHostEnvironment.WebRootPath, "media/products");
                 string oldImagePath = Path.Combine(uploadsDir, product.Image);
                 if (System.IO.File.Exists(oldImagePath))
@@ -147,14 +146,13 @@ namespace FIZJQ7_ASP_2022231.Areas.Admin.Controllers
                     System.IO.File.Delete(oldImagePath);
                 }
             }
-            //termék törlése
+
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
 
-            TempData["Success"] = "A termék sikeresen törölve!";
+            TempData["Success"] = "Termék törölve!";
 
             return RedirectToAction("Index");
         }
     }
 }
-
