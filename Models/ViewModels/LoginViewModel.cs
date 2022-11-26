@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ShoppingCart.Models.ViewModels
+namespace FIZJQ7_ASP_2022231.Models.ViewModels
 {
     public class LoginViewModel
     {

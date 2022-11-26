@@ -29,7 +29,7 @@ namespace FIZJQ7_ASP_2022231.Infrastructure
                         new Product
                         {
                             Name = "Banán",
-                            Slug = "bananan",
+                            Slug = "banana",
                             Description = "1. osztályú lédig banán",
                             Price = 3,
                             Category = fruits,

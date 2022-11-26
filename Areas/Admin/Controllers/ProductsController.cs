@@ -150,7 +150,7 @@ namespace ShoppingCart.Areas.Admin.Controllers
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
 
-            TempData["Success"] = "The product has been deleted!";
+            TempData["Success"] = "Termék törölve!";
 
             return RedirectToAction("Index");
         }
