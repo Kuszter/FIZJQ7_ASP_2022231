@@ -52,14 +52,14 @@
 </div>
 
 <div>
-        <a asp-action="Index">Back to List</a>
+        <a asp-action="Index">Vissza a listához</a>
 </div>
 
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
 }
-
+//CKEditor cdn oldaláról másolva -> Azerkesztő tool a termék leírásának formázásához 
 <script src="https://cdn.ckeditor.com/4.19.0/standard/ckeditor.js"></script>
 <script>
         $("#ImageUpload").change(function() {

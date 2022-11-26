@@ -15,7 +15,11 @@ namespace FIZJQ7_ASP_2022231.Models
         [Range(0.01,double.MaxValue,ErrorMessage ="Adjon meg árat!")]
         [Column(TypeName ="decimal(8,2)")]
         public int Price { get; set; }
+        [Required]
+        [Range(1, int.MaxValue, ErrorMessage = "Adjon meg kategóriát!")]
         public long CategoryId { get; set; }
+       
+       
         public Category Category { get; set; }
         public string Image { get; set; }
 
