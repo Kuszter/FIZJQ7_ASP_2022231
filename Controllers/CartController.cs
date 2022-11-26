@@ -3,7 +3,8 @@ using FIZJQ7_ASP_2022231.Models;
 using FIZJQ7_ASP_2022231.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FIZJQ7_ASP_2022231.Controllers
+
+namespace ShoppingCart.Controllers
 {
     public class CartController : Controller
     {
@@ -13,92 +14,98 @@ namespace FIZJQ7_ASP_2022231.Controllers
         {
             _context = context;
         }
-        public async Task <IActionResult> Add(long id)
-        {
-            Product product = await _context.Products.FindAsync(id);
-            List<CartItem> cartItems = HttpContext.Session.GetJson<List<CartItem>>("Car") ?? new List<CartItem>();
-            CartItem cartItem = cartItems.Where(x => x.ProductId == id).FirstOrDefault();
-            if (cartItem==null)
-            {
-                cartItems.Add(new CartItem(product));
-            }
-            else
-            {
-                cartItem.Quantity++;
-            }
-            HttpContext.Session.SetJson("Cart", cartItems);
-            TempData["Succes"] = "A termék sikeresen hozzáadva!";
-            return Redirect(Request.Headers["Refer"].ToString());
-        }
 
         public IActionResult Index()
         {
-            List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem >> ("Cart")??new List<CartItem> ();
+            List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart") ?? new List<CartItem>();
 
-            CartViewModel cartvm = new()
+            CartViewModel cartVM = new()
             {
-                cartItems = cart,
+                CartItems = cart,
                 GrandTotal = cart.Sum(x => x.Quantity * x.Price)
             };
 
+            return View(cartVM);
+        }
 
-            return View(cartvm);
+        public async Task<IActionResult> Add(long id)
+        {
+            Product product = await _context.Products.FindAsync(id);
+
+            List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart") ?? new List<CartItem>();
+
+            CartItem cartItem = cart.Where(c => c.ProductId == id).FirstOrDefault();
+
+            if (cartItem == null)
+            {
+                cart.Add(new CartItem(product));
+            }
+            else
+            {
+                cartItem.Quantity += 1;
+            }
+
+            HttpContext.Session.SetJson("Cart", cart);
+
+            TempData["Success"] = "Termék hozzáadva!";
+
+            return Redirect(Request.Headers["Referer"].ToString());
         }
 
         public async Task<IActionResult> Decrease(long id)
         {
+            List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart");
 
-            List<CartItem> cartItems = HttpContext.Session.GetJson<List<CartItem>>("Car");
-            CartItem cartItem = cartItems.Where(x => x.ProductId == id).FirstOrDefault();
-            if (cartItem.Quantity>1)
+            CartItem cartItem = cart.Where(c => c.ProductId == id).FirstOrDefault();
+
+            if (cartItem.Quantity > 1)
             {
-                cartItem.Quantity--;
+                --cartItem.Quantity;
             }
             else
             {
-                cartItems.RemoveAll(x => x.ProductId == id);
+                cart.RemoveAll(p => p.ProductId == id);
             }
-            if (cartItems.Count==0)
+
+            if (cart.Count == 0)
             {
                 HttpContext.Session.Remove("Cart");
             }
             else
             {
-                HttpContext.Session.SetJson("Cart", cartItems);
-                
+                HttpContext.Session.SetJson("Cart", cart);
             }
-           
-            TempData["Succes"] = "A termék sikeresen eltávolítva!";
+
+            TempData["Success"] = "Termék eltávolítva!";
+
             return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> Remove(long id)
         {
+            List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart");
 
-            List<CartItem> cartItems = HttpContext.Session.GetJson<List<CartItem>>("Car");
-           cartItems.RemoveAll(x => x.ProductId == id);
-            
-          
-            if (cartItems.Count == 0)
+            cart.RemoveAll(p => p.ProductId == id);
+
+            if (cart.Count == 0)
             {
                 HttpContext.Session.Remove("Cart");
             }
             else
             {
-                HttpContext.Session.SetJson("Cart", cartItems);
-
+                HttpContext.Session.SetJson("Cart", cart);
             }
 
-            TempData["Succes"] = "A termék sikeresen eltávolítva!";
+            TempData["Success"] = "Termék eltávolítva!";
+
             return RedirectToAction("Index");
         }
 
-        public  IActionResult Clear()
+        public IActionResult Clear()
         {
-
             HttpContext.Session.Remove("Cart");
+
             return RedirectToAction("Index");
         }
-
     }
 }

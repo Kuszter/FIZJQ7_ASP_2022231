@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace FIZJQ7_ASP_2022231.Controllers
+namespace ShoppingCart.Controllers
 {
     public class ProductsController : Controller
     {
@@ -17,7 +17,7 @@ namespace FIZJQ7_ASP_2022231.Controllers
 
         public async Task<IActionResult> Index(string categorySlug = "", int p = 1)
         {
-            int pageSize = 3;
+            int pageSize = 10;
             ViewBag.PageNumber = p;
             ViewBag.PageRange = pageSize;
             ViewBag.CategorySlug = categorySlug;

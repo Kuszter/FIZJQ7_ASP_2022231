@@ -1,8 +1,9 @@
 ﻿using FIZJQ7_ASP_2022231.Models;
 using Microsoft.AspNetCore.Mvc;
+
 using System.Diagnostics;
 
-namespace FIZJQ7_ASP_2022231.Controllers
+namespace ShoppingCart.Controllers
 {
     public class HomeController : Controller
     {

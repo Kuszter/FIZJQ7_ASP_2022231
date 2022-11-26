@@ -1,16 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FIZJQ7_ASP_2022231.Infrastructure;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace FIZJQ7_ASP_2022231.Infrastructure.Components
+namespace ShoppingCart.Infrastructure.Components
 {
-    public class CategoriesViewComponent:ViewComponent
+    public class CategoriesViewComponent : ViewComponent
     {
-        private readonly ShopContext shopContext;
-        public CategoriesViewComponent(ShopContext shopContext)
+        private readonly ShopContext _context;
+
+        public CategoriesViewComponent(ShopContext context)
         {
-            this.shopContext = shopContext;
+            _context = context;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync() => View(await shopContext.Categories.ToListAsync());
+        public async Task<IViewComponentResult> InvokeAsync() => View(await _context.Categories.ToListAsync());
     }
 }
