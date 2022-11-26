@@ -9,7 +9,7 @@ namespace FIZJQ7_ASP_2022231.Infrastructure
     {
         public static void SeedDatabase(ShopContext context)
         {
-            //context.Database.Migrate();
+            context.Database.Migrate();
 
             if (!context.Products.Any())
             {

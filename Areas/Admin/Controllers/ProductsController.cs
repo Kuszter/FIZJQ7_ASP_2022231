@@ -139,6 +139,7 @@ namespace FIZJQ7_ASP_2022231.Areas.Admin.Controllers
 
             if (!string.Equals(product.Image, "noimage.png"))
             {
+                //kép trölése
                 string uploadsDir = Path.Combine(_webHostEnvironment.WebRootPath, "media/products");
                 string oldImagePath = Path.Combine(uploadsDir, product.Image);
                 if (System.IO.File.Exists(oldImagePath))
@@ -146,7 +147,7 @@ namespace FIZJQ7_ASP_2022231.Areas.Admin.Controllers
                     System.IO.File.Delete(oldImagePath);
                 }
             }
-
+            //termék törlése
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
 

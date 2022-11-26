@@ -7,9 +7,7 @@ namespace FIZJQ7_ASP_2022231.Infrastructure.Components
 {
     public class SmallCarViwComponent : ViewComponent
     {
-
-        public class SmallCartViewComponent : ViewComponent
-        {
+        
             public IViewComponentResult Invoke()
             {
                 List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart");
@@ -33,5 +31,6 @@ namespace FIZJQ7_ASP_2022231.Infrastructure.Components
         }
 
 
+
     }
-}
+

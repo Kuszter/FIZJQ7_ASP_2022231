@@ -9,7 +9,7 @@ namespace FIZJQ7_ASP_2022231.Models
         [Required(ErrorMessage ="Kerem adjon meg nevet!")]
         public string Name { get; set; }
         public string Slug { get; set; }
-        [Required (ErrorMessage ="Adjon meg leirast!")]
+        [Required (ErrorMessage ="Adjon meg leírást!")]
         public string Description { get; set; }
         [Required]
         [Range(0.01,double.MaxValue,ErrorMessage ="Adjon meg árat!")]
@@ -21,7 +21,7 @@ namespace FIZJQ7_ASP_2022231.Models
        
        
         public Category Category { get; set; }
-        public string Image { get; set; }
+        public string Image { get; set; } = "noimage.png";
 
         [NotMapped]
         [FileExtensions]
