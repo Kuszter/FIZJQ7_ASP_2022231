@@ -24,7 +24,7 @@ namespace ShoppingCart.Controllers
         {
             if (ModelState.IsValid)
             {
-                AppUser newUser = new AppUser { UserName = user.UserName, Email = user.Email,Id=user.Id };
+                AppUser newUser = new AppUser { UserName = user.UserName, Email = user.Email };
                 IdentityResult result = await _userManager.CreateAsync(newUser, user.Password);
 
                 if (result.Succeeded)
@@ -56,7 +56,7 @@ namespace ShoppingCart.Controllers
                     return Redirect(loginVM.ReturnUrl ?? "/");
                 }
 
-                ModelState.AddModelError("", "Hibás felhasználónév vagy jelszó!");
+                ModelState.AddModelError("", "Hibás felhasználónév vagy jelszó");
             }
 
             return View(loginVM);
