@@ -35,12 +35,12 @@ namespace CmsShopping.Infrastructure.TagHelpers
 
             if (string.IsNullOrEmpty(PageFirst))
             {
-                PageFirst = "First";
+                PageFirst = "Első";
             }
 
             if (string.IsNullOrEmpty(PageLast))
             {
-                PageLast = "Last";
+                PageLast = "Utolsó";
             }
 
             var content = new StringBuilder();
