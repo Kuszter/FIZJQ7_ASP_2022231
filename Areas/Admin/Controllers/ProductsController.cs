@@ -76,7 +76,7 @@ namespace ShoppingCart.Areas.Admin.Controllers
                 _context.Add(product);
                 await _context.SaveChangesAsync();
 
-                TempData["Success"] = "Termék létrehozva";
+                TempData["Success"] = "A termék létrehozva!";
 
                 return RedirectToAction("Index");
             }
@@ -106,7 +106,7 @@ namespace ShoppingCart.Areas.Admin.Controllers
                 var slug = await _context.Products.FirstOrDefaultAsync(p => p.Slug == product.Slug);
                 if (slug != null)
                 {
-                    ModelState.AddModelError("", "Termék már létezik");
+                    ModelState.AddModelError("", "A termék létezik már.");
                     return View(product);
                 }
 
@@ -127,7 +127,7 @@ namespace ShoppingCart.Areas.Admin.Controllers
                 _context.Update(product);
                 await _context.SaveChangesAsync();
 
-                TempData["Success"] = "Termék szerkesztve!";
+                TempData["Success"] = "A termék szerksztve!";
             }
 
             return View(product);
@@ -150,7 +150,7 @@ namespace ShoppingCart.Areas.Admin.Controllers
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
 
-            TempData["Success"] = "Termék törölve!";
+            TempData["Success"] = "The product has been deleted!";
 
             return RedirectToAction("Index");
         }
