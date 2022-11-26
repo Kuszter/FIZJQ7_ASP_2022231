@@ -3,6 +3,7 @@ using FIZJQ7_ASP_2022231.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ShopContext>(options =>
@@ -66,4 +67,3 @@ var context = app.Services.CreateScope().ServiceProvider.GetRequiredService<Shop
 SeedData.SeedDatabase(context);
 
 app.Run();
-

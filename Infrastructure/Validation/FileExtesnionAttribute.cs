@@ -15,7 +15,7 @@ namespace FIZJQ7_ASP_2022231.Infrastructure.Validation
 
                 if (!result)
                 {
-                    return new ValidationResult("A kiterjesztés : .jpg .png lehet!);
+                    return new ValidationResult("A kiterjesztés : .jpg .png lehet!");
                 }
             }
 

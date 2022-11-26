@@ -1,9 +1,9 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>@ViewData["Title"] - ShoppingCart</title>
+        <title>@ViewData["Title"] Főoldal</title>
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/ShoppingCart.styles.css" asp-append-version="true" />
@@ -20,7 +20,7 @@
                                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                                         <ul class="navbar-nav flex-grow-1">
                                                 <li class="nav-item">
-                                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Főoldal</a>
                                                 </li>
                                                 <li class="nav-item">
                                                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
@@ -31,19 +31,19 @@
                                                                 <a class="btn btn-primary" asp-area="Admin" asp-controller="Products" asp-action="Index">Termékek</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                                <a class="btn btn-danger" asp-controller="Account" asp-action="Logout">@User.Identity.Name, Kijelentkezés</a>
+                                                                <a class="btn btn-danger" asp-controller="Account" asp-action="Logout">@User.Identity.Name, kijelentkezés</a>
                                                         </li>
                                                         @if (User.IsInRole("Admin"))
                                                         {
                                                                 <li class="nav-item">
-                                                                        <a class="btn btn-primary" asp-area="Admin" asp-controller="Products" asp-action="Index">Termékek</a>
+                                                                        <a class="btn btn-primary" asp-area="Admin" asp-controller="Products" asp-action="Index">Products</a>
                                                                 </li>
                                                         }
                                                 }
                                                 else
                                                 {
                                                         <li class="nav-item">
-                                                                <a class="btn btn-success" asp-controller="Account" asp-action="Login">Bejelentkezés</a>
+                                                                <a class="btn btn-success" asp-controller="Account" asp-action="Bejelentkezés">Log in</a>
                                                         </li>
                                                 }
                                         </ul>
@@ -71,7 +71,7 @@
 
         <footer class="border-top footer text-muted">
                 <div class="container">
-                        &copy; 2022 - ShoppingCart - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        &copy; 2022 - Kusztos Dávid - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                 </div>
         </footer>
         <script src="~/lib/jquery/dist/jquery.min.js"></script>

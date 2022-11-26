@@ -2,7 +2,7 @@
 {
     public class CartViewModel
     {
-        public List<CartItem> cartItems { get; set; }
+        public List<CartItem> CartItems { get; set; }
         public decimal GrandTotal { get; set; }
     }
 }

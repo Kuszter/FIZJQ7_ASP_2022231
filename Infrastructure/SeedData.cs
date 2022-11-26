@@ -13,8 +13,8 @@ namespace FIZJQ7_ASP_2022231.Infrastructure
 
             if (!context.Products.Any())
             {
-                Category fruits = new Category { Name = "Fruits", Slug = "fruits" };
-                Category shirts = new Category { Name = "Shirts", Slug = "shirts" };
+                Category fruits = new Category { Name = "Gyümölcs", Slug = "gyumolcs" };
+                Category shirts = new Category { Name = "Póló", Slug = "polo" };
 
                 context.Products.AddRange(
                         new Product
